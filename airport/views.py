@@ -1,4 +1,5 @@
 from django.db.models import Count, F
+from drf_spectacular.utils import extend_schema, OpenApiParameter
 from rest_framework import viewsets, status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
@@ -128,6 +129,18 @@ class AirplaneViewSet(viewsets.ModelViewSet):
             queryset = queryset.prefetch_related("facilities", )
 
         return queryset.distinct()
+
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(
+                "facilities",
+                type={"type": "list", "items": {"type": "number"}},
+                description="Filter by facility id (ex. ?facilities=2,5)",
+            ),
+        ]
+    )
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
 
 
 class CrewViewSet(viewsets.ModelViewSet):
