@@ -1,3 +1,4 @@
+from django.db.models import Count, F
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAdminUser
@@ -150,6 +151,8 @@ class FlightViewSet(viewsets.ModelViewSet):
             queryset = (
                 queryset
                 .select_related("airplane", "route",)
+                .annotate(
+                    tickets_available=F("airplane__rows") * F("airplane__seats_in_row") - Count("tickets"))
             )
 
         return queryset
