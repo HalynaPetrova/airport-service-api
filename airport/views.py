@@ -108,6 +108,12 @@ class AirplaneViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = self.queryset
 
+        facilities = self.request.query_params.get("facilities")
+
+        if facilities:
+            facilities_ids = self._params_to_ints(facilities)
+            queryset = queryset.filter(facilities__id__in=facilities_ids)
+
         if self.action in ("list", "retrieve"):
             queryset = queryset.prefetch_related("facilities", )
 
