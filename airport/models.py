@@ -160,13 +160,24 @@ class Ticket(models.Model):
         ordering = ["row", "seat"]
 
     @staticmethod
-    def validate_ticket(seat: int, airplane, error_to_raise):
-        if not (1 <= seat <= airplane.num_seats):
-            raise error_to_raise({
-                f"seat": f"Seat must be in range (1, {airplane.num_seats}), not {seat}"})
+    def validate_ticket(row, seat, airplane, error_to_raise):
+        for ticket_attr_value, ticket_attr_name, airplane_attr_name in [
+            (row, "row", "rows"),
+            (seat, "seat", "seats_in_row"),
+        ]:
+            count_attrs = getattr(airplane, airplane_attr_name)
+            if not (1 <= ticket_attr_value <= count_attrs):
+                raise error_to_raise(
+                    {
+                        ticket_attr_name: f"{ticket_attr_name} "
+                        f"number must be in available range: "
+                        f"(1, {airplane_attr_name}): "
+                        f"(1, {count_attrs})"
+                    }
+                )
 
     def clean(self):
-        Ticket.validate_ticket(self.seat, self.flight.airplane, ValidationError)
+        Ticket.validate_ticket(self.row, self.seat, self.flight.airplane, ValidationError)
 
     def save(
         self, force_insert=False, force_update=False, using=None, update_fields=None
