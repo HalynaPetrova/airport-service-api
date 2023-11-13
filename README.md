@@ -72,6 +72,10 @@ airplane, airplane type, tickets, order, ratings.
 - Get access token via: user/token
 
 ## DB structure
+![airport_airplane](https://github.com/HalynaPetrova/airport-service-api/assets/92261713/0bedb93f-e46f-4b38-9e6f-696466a7a8a1)
 
 ## Pages images
-
+![Знімок екрана з 2023-11-13 18-06-18](https://github.com/HalynaPetrova/airport-service-api/assets/92261713/a2ce2898-ca21-4f75-9cc8-96475d7f78a5)
+![Знімок екрана з 2023-11-13 18-06-42](https://github.com/HalynaPetrova/airport-service-api/assets/92261713/638046b6-ae82-46b7-b93f-3cbb9e19c554)
+![Знімок екрана з 2023-11-13 18-07-30](https://github.com/HalynaPetrova/airport-service-api/assets/92261713/9a9aad63-7094-487b-a409-f99c63bc5872)
+![Знімок екрана з 2023-11-13 18-07-56](https://github.com/HalynaPetrova/airport-service-api/assets/92261713/881ea89d-fcb3-4577-ac26-b5d44e68e8bd)
