@@ -72,10 +72,10 @@ airplane, airplane type, tickets, order, ratings.
 - Get access token via: user/token
 
 ## DB structure
-![airport_airplane.png](..%2F..%2F%D0%97%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F%2Fairport_airplane.png)
+![airport_airplane](https://github.com/HalynaPetrova/airport-service-api/assets/92261713/0bedb93f-e46f-4b38-9e6f-696466a7a8a1)
 
 ## Pages images
-![Знімок екрана з 2023-11-13 18-06-18.png](..%2F..%2F%D0%97%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F%2F%D0%97%D0%BD%D1%96%D0%BC%D0%BA%D0%B8%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%2F%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B7%202023-11-13%2018-06-18.png)
-![Знімок екрана з 2023-11-13 18-06-42.png](..%2F..%2F%D0%97%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F%2F%D0%97%D0%BD%D1%96%D0%BC%D0%BA%D0%B8%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%2F%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B7%202023-11-13%2018-06-42.png)
-![Знімок екрана з 2023-11-13 18-07-30.png](..%2F..%2F%D0%97%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F%2F%D0%97%D0%BD%D1%96%D0%BC%D0%BA%D0%B8%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%2F%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B7%202023-11-13%2018-07-30.png)
-![Знімок екрана з 2023-11-13 18-07-56.png](..%2F..%2F%D0%97%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F%2F%D0%97%D0%BD%D1%96%D0%BC%D0%BA%D0%B8%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%2F%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B7%202023-11-13%2018-07-56.png)
+![Знімок екрана з 2023-11-13 18-06-18](https://github.com/HalynaPetrova/airport-service-api/assets/92261713/a2ce2898-ca21-4f75-9cc8-96475d7f78a5)
+![Знімок екрана з 2023-11-13 18-06-42](https://github.com/HalynaPetrova/airport-service-api/assets/92261713/638046b6-ae82-46b7-b93f-3cbb9e19c554)
+![Знімок екрана з 2023-11-13 18-07-30](https://github.com/HalynaPetrova/airport-service-api/assets/92261713/9a9aad63-7094-487b-a409-f99c63bc5872)
+![Знімок екрана з 2023-11-13 18-07-56](https://github.com/HalynaPetrova/airport-service-api/assets/92261713/881ea89d-fcb3-4577-ac26-b5d44e68e8bd)
