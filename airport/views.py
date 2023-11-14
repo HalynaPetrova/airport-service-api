@@ -62,7 +62,7 @@ class AirportViewSet(viewsets.ModelViewSet):
         airport = self.get_object()
         serializer = self.get_serializer(airport, data=request.data)
 
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -90,7 +90,7 @@ class AirplaneTypeViewSet(viewsets.ModelViewSet):
         airplane_type = self.get_object()
         serializer = self.get_serializer(airplane_type, data=request.data)
 
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
 
