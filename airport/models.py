@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 
 
-class Airport (models.Model):
+class Airport(models.Model):
     name = models.CharField(max_length=255)
     closest_big_city = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
@@ -20,7 +20,7 @@ class Airport (models.Model):
         return self.name
 
 
-class AirplaneType (models.Model):
+class AirplaneType(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField(
         null=True,
@@ -32,7 +32,7 @@ class AirplaneType (models.Model):
         return self.name
 
 
-class Airplane (models.Model):
+class Airplane(models.Model):
     name = models.CharField(max_length=255)
     rows = models.IntegerField()
     seats_in_row = models.IntegerField()
@@ -60,7 +60,7 @@ class Airplane (models.Model):
         return self.name
 
 
-class Crew (models.Model):
+class Crew(models.Model):
     POSITION = (
         ("captain", "captain"),
         ("pilot", "pilot"),
@@ -84,7 +84,7 @@ class Crew (models.Model):
         return f"{self.first_name} {self.last_name}"
 
 
-class Facility (models.Model):
+class Facility(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
     class Meta:
@@ -94,7 +94,7 @@ class Facility (models.Model):
         return self.name
 
 
-class Flight (models.Model):
+class Flight(models.Model):
     route = models.ForeignKey(
         "Route",
         on_delete=models.CASCADE,
@@ -125,7 +125,7 @@ class Order(models.Model):
         ordering = ["-created_at"]
 
 
-class Route (models.Model):
+class Route(models.Model):
     source = models.ForeignKey(
         Airport,
         on_delete=models.CASCADE,
@@ -156,7 +156,11 @@ class Ticket(models.Model):
     )
 
     class Meta:
-        unique_together = ("row", "seat", "flight",)
+        unique_together = (
+            "row",
+            "seat",
+            "flight",
+        )
         ordering = ["row", "seat"]
 
     @staticmethod
@@ -177,10 +181,18 @@ class Ticket(models.Model):
                 )
 
     def clean(self):
-        Ticket.validate_ticket(self.row, self.seat, self.flight.airplane, ValidationError)
+        Ticket.validate_ticket(
+            self.row, self.seat, self.flight.airplane, ValidationError
+        )
 
     def save(
-        self, force_insert=False, force_update=False, using=None, update_fields=None
+        self,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None
     ):
         self.full_clean()
-        return super(Ticket, self).save(force_insert, force_update, using, update_fields)
+        return super(Ticket, self).save(
+            force_insert, force_update, using, update_fields
+        )

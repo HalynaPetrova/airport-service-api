@@ -6,7 +6,16 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 
-from airport.models import Airport, AirplaneType, Airplane, Crew, Facility, Flight, Order, Route
+from airport.models import (
+    Airport,
+    AirplaneType,
+    Airplane,
+    Crew,
+    Facility,
+    Flight,
+    Order,
+    Route,
+)
 from airport.permission import IsAdminOrIfAuthenticatedReadOnly
 from airport.serializers import (
     AirportSerializer,
@@ -51,10 +60,7 @@ class AirportViewSet(viewsets.ModelViewSet):
     )
     def upload_image(self, request, pk=None):
         airport = self.get_object()
-        serializer = self.get_serializer(
-            airport,
-            data=request.data
-        )
+        serializer = self.get_serializer(airport, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -82,10 +88,7 @@ class AirplaneTypeViewSet(viewsets.ModelViewSet):
     )
     def upload_image(self, request, pk=None):
         airplane_type = self.get_object()
-        serializer = self.get_serializer(
-            airplane_type,
-            data=request.data
-        )
+        serializer = self.get_serializer(airplane_type, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -95,7 +98,10 @@ class AirplaneTypeViewSet(viewsets.ModelViewSet):
 
 
 class AirplaneViewSet(viewsets.ModelViewSet):
-    queryset = Airplane.objects.prefetch_related("crew", "airplane_type", )
+    queryset = Airplane.objects.prefetch_related(
+        "crew",
+        "airplane_type",
+    )
     serializer_class = AirplaneSerializer
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
@@ -122,7 +128,9 @@ class AirplaneViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(facilities__id__in=facilities_ids)
 
         if self.action in ("list", "retrieve"):
-            queryset = queryset.prefetch_related("facilities", )
+            queryset = queryset.prefetch_related(
+                "facilities",
+            )
 
         return queryset.distinct()
 
@@ -140,7 +148,9 @@ class AirplaneViewSet(viewsets.ModelViewSet):
 
 
 class CrewViewSet(viewsets.ModelViewSet):
-    queryset = Crew.objects.prefetch_related("airplanes", )
+    queryset = Crew.objects.prefetch_related(
+        "airplanes",
+    )
     serializer_class = CrewSerializer
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
@@ -175,11 +185,13 @@ class FlightViewSet(viewsets.ModelViewSet):
         queryset = self.queryset
 
         if self.action == "list":
-            queryset = (
-                queryset
-                .select_related("airplane", "route",)
-                .annotate(
-                    tickets_available=F("airplane__rows") * F("airplane__seats_in_row") - Count("tickets"))
+            queryset = queryset.select_related(
+                "airplane",
+                "route",
+            ).annotate(
+                tickets_available=F(
+                    "airplane__rows") * F("airplane__seats_in_row")
+                - Count("tickets")
             )
 
         return queryset

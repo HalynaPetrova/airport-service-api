@@ -49,15 +49,11 @@ class AuthenticatedCrewApiTest(TestCase):
 
         airplane_type = AirplaneType.objects.create(name="Test")
         airplane1 = Airplane.objects.create(
-            name="Test",
-            rows=10,
-            seats_in_row=10,
-            airplane_type=airplane_type)
+            name="Test", rows=10, seats_in_row=10, airplane_type=airplane_type
+        )
         airplane2 = Airplane.objects.create(
-            name="Test",
-            rows=10,
-            seats_in_row=10,
-            airplane_type=airplane_type)
+            name="Test", rows=10, seats_in_row=10, airplane_type=airplane_type
+        )
 
         crew_with_airplanes.airplanes.add(airplane1, airplane2)
 
@@ -71,11 +67,11 @@ class AuthenticatedCrewApiTest(TestCase):
     def test_retrieve_crew_detail(self):
         crew = sample_crew()
         airplane_type = AirplaneType.objects.create(name="Test")
-        crew.airplanes.add(Airplane.objects.create(
-            name="Test",
-            rows=10,
-            seats_in_row=10,
-            airplane_type=airplane_type))
+        crew.airplanes.add(
+            Airplane.objects.create(
+                name="Test", rows=10, seats_in_row=10, airplane_type=airplane_type
+            )
+        )
 
         url = detail_url(crew.id)
         res = self.client.get(url)
@@ -100,9 +96,7 @@ class AdminCrewTests(TestCase):
     def setUp(self):
         self.client = APIClient()
         self.user = get_user_model().objects.create_user(
-            "test@test.com",
-            "test12345",
-            is_staff=True
+            "test@test.com", "test12345", is_staff=True
         )
         self.client.force_authenticate(self.user)
 

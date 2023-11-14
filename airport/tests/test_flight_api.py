@@ -16,9 +16,7 @@ def detail_url(flight_id: int):
 
 def sample_flight(**params):
     airport = Airport.objects.create(
-        name="Test",
-        closest_big_city="Test",
-        country="Test"
+        name="Test", closest_big_city="Test", country="Test"
     )
     route = Route.objects.create(
         source=airport,
@@ -82,9 +80,7 @@ class AuthenticatedFlightTest(TestCase):
 
     def test_create_flight_forbidden(self):
         airport = Airport.objects.create(
-            name="Test",
-            closest_big_city="Test",
-            country="Test"
+            name="Test", closest_big_city="Test", country="Test"
         )
         route = Route.objects.create(
             source=airport,
@@ -115,17 +111,13 @@ class AdminFlightTests(TestCase):
     def setUp(self):
         self.client = APIClient()
         self.user = get_user_model().objects.create_user(
-            "test@test.com",
-            "test12345",
-            is_staff=True
+            "test@test.com", "test12345", is_staff=True
         )
         self.client.force_authenticate(self.user)
 
     def test_create_flight(self):
         airport = Airport.objects.create(
-            name="1",
-            closest_big_city="Test",
-            country="Test"
+            name="1", closest_big_city="Test", country="Test"
         )
         route = Route.objects.create(
             source=airport,
